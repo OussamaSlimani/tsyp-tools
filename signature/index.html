@@ -1,151 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IEEE TSYP13 Signature Tool</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        margin: 0;
-        padding: 20px;
-        background-color: #f5f5f5;
-      }
-      .container {
-        width: 100%;
-        max-width: 600px;
-        margin-bottom: 30px;
-      }
-      .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto 30px;
-      }
-      select {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      .copy-btn {
-        background-color: #037a7f;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .copy-btn:hover {
-        background-color: #025b5f;
-      }
-      .success-message {
-        color: #037a7f;
-        font-weight: bold;
-        margin-top: 10px;
-        height: 20px;
-        text-align: center;
-      }
-      .signature {
-        display: none;
-      }
-      .signature.active {
-        display: block;
-      }
 
-      .instructions {
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        width: 500px;
-        margin: 20px auto;
-      }
-      .instructions h3 {
-        color: #037a7f;
-        font-size: 18px;
-      }
-      .instructions ol {
-        padding-left: 20px;
-      }
-      .instructions li {
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="instructions">
-      <h3>How to Add Your Signature in Gmail</h3>
-      <ol>
-        <li>Click the <strong>Copy Signature</strong> button.</li>
-        <li>Go to Gmail.</li>
-        <li>
-          Click on <strong>Settings</strong> (gear icon) >
-          <strong>See all settings</strong>.
-        </li>
-        <li>
-          In the <strong>General</strong> tab, scroll down to
-          <strong>Signature</strong>.
-        </li>
-        <li>Click the <strong>Create new</strong> button.</li>
-        <li>Give your signature a name.</li>
-        <li>Paste your signature in the text box.</li>
-        <li>Scroll down and click <strong>Save Changes</strong>.</li>
-      </ol>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEEE TSYP13 Signature Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
 
-    <div class="controls">
-      <select id="signatureSelector">
-        <option value="">Select a team member</option>
-      </select>
-      <button id="copyButton" class="copy-btn">Copy Signature</button>
-      <div id="successMessage" class="success-message"></div>
-    </div>
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
 
-    <div class="container" id="signaturesContainer"></div>
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
 
-    <script>
-      // Fetch team members data
-      fetch('team_members.json')
-        .then(response => response.json())
-        .then(data => {
-          const teamMembers = data.team_members;
-          const selector = document.getElementById('signatureSelector');
-          const container = document.getElementById('signaturesContainer');
-          
-          // Populate dropdown and create signature elements
-          teamMembers.forEach(member => {
-            // Add option to dropdown
-            const option = document.createElement('option');
-            option.value = member.id;
-            option.textContent = member.name;
-            selector.appendChild(option);
-            
-            // Create signature HTML
-            const signatureDiv = document.createElement('div');
-            signatureDiv.id = member.id;
-            signatureDiv.className = 'signature';
-            
-            const phoneDisplay = member.phone ? `
-              <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
-                <strong style="color: #037a7f">Phone: </strong>
-                <a href="tel:${member.phone.replace(/\s+/g, '')}" style="color: #444; text-decoration: none">
-                  ${member.phone}
-                </a>
-              </p>
-            ` : '';
-            
-            signatureDiv.innerHTML = `
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .copy-btn {
+      background-color: #037a7f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .copy-btn:hover {
+      background-color: #025b5f;
+    }
+
+    .success-message {
+      color: #037a7f;
+      font-weight: bold;
+      margin-top: 10px;
+      height: 20px;
+      text-align: center;
+    }
+
+    .signature {
+      display: none;
+    }
+
+    .signature.active {
+      display: block;
+    }
+
+    .instructions {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      margin: 20px auto;
+    }
+
+    .instructions h3 {
+      color: #037a7f;
+      font-size: 18px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="instructions">
+    <h3>How to Add Your Signature in Gmail</h3>
+    <ol>
+      <li>Click the <strong>Copy Signature</strong> button.</li>
+      <li>Go to Gmail.</li>
+      <li>
+        Click on <strong>Settings</strong> (gear icon) >
+        <strong>See all settings</strong>.
+      </li>
+      <li>
+        In the <strong>General</strong> tab, scroll down to
+        <strong>Signature</strong>.
+      </li>
+      <li>Click the <strong>Create new</strong> button.</li>
+      <li>Give your signature a name.</li>
+      <li>Paste your signature in the text box.</li>
+      <li>Scroll down and click <strong>Save Changes</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="controls">
+    <select id="signatureSelector">
+      <option value="">Select a team member</option>
+    </select>
+    <button id="copyButton" class="copy-btn">Copy Signature</button>
+    <div id="successMessage" class="success-message"></div>
+  </div>
+
+  <div class="container" id="signaturesContainer"></div>
+
+  <script>
+    // Fetch team members data
+    fetch('team_members.json')
+      .then(response => response.json())
+      .then(data => {
+        const teamMembers = data.team_members;
+        const selector = document.getElementById('signatureSelector');
+        const container = document.getElementById('signaturesContainer');
+
+        // Populate dropdown and create signature elements
+        teamMembers.forEach(member => {
+          // Add option to dropdown
+          const option = document.createElement('option');
+          option.value = member.id;
+          option.textContent = member.name;
+          selector.appendChild(option);
+
+          // Create signature HTML
+          const signatureDiv = document.createElement('div');
+          signatureDiv.id = member.id;
+          signatureDiv.className = 'signature';
+
+          signatureDiv.innerHTML = `
               <table style="
                 width: 100%;
                 max-width: 500px;
@@ -182,7 +186,15 @@
                     <p style="margin: 4px 0; font-size: 13px; color: #666">
                       IEEE Tunisian Student &amp; Young Professional 13 Congress
                     </p>
-                    ${phoneDisplay}
+
+                                  <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
+                <strong style="color: #037a7f">Phone: </strong>
+                <a href="tel:${member.phone.replace(/\s+/g, '')}" style="color: #444; text-decoration: none">
+                  ${member.phone}
+                </a>
+              </p>
+
+
                     <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
                       <strong style="color: #037a7f">Email: </strong>
                       <a href="mailto:${member.email}" style="color: #444; text-decoration: none">
@@ -199,75 +211,76 @@
                 </tr>
               </table>
             `;
-            
-            container.appendChild(signatureDiv);
-          });
-          
-          // Set up event listeners after elements are created
-          setupEventListeners();
-        })
-        .catch(error => {
-          console.error('Error loading team members:', error);
-          document.getElementById('successMessage').textContent = 'Error loading team members data';
+
+          container.appendChild(signatureDiv);
         });
 
-      function setupEventListeners() {
-        document
-          .getElementById("signatureSelector")
-          .addEventListener("change", function () {
-            // Hide all signatures
-            document.querySelectorAll(".signature").forEach((sig) => {
-              sig.classList.remove("active");
-            });
+        // Set up event listeners after elements are created
+        setupEventListeners();
+      })
+      .catch(error => {
+        console.error('Error loading team members:', error);
+        document.getElementById('successMessage').textContent = 'Error loading team members data';
+      });
 
-            // Show selected signature
-            const selected = this.value;
-            if (selected) {
-              document.getElementById(selected).classList.add("active");
-            }
+    function setupEventListeners() {
+      document
+        .getElementById("signatureSelector")
+        .addEventListener("change", function () {
+          // Hide all signatures
+          document.querySelectorAll(".signature").forEach((sig) => {
+            sig.classList.remove("active");
           });
 
-        document
-          .getElementById("copyButton")
-          .addEventListener("click", function () {
-            const selected = document.getElementById("signatureSelector").value;
-            if (!selected) {
-              document.getElementById("successMessage").textContent =
-                "Please select a team member first";
-              setTimeout(() => {
-                document.getElementById("successMessage").textContent = "";
-              }, 3000);
-              return;
-            }
+          // Show selected signature
+          const selected = this.value;
+          if (selected) {
+            document.getElementById(selected).classList.add("active");
+          }
+        });
 
-            const signatureElement = document.getElementById(selected);
-
-            // Create a range and select the signature
-            const range = document.createRange();
-            range.selectNode(signatureElement);
-
-            // Clear any current selection
-            window.getSelection().removeAllRanges();
-
-            // Add the signature to the selection
-            window.getSelection().addRange(range);
-
-            // Copy the selected content
-            document.execCommand("copy");
-
-            // Clear the selection
-            window.getSelection().removeAllRanges();
-
-            // Show success message
-            const successMessage = document.getElementById("successMessage");
-            successMessage.textContent = "Signature copied to clipboard!";
-
-            // Hide the message after 3 seconds
-            setTimeout(function () {
-              successMessage.textContent = "";
+      document
+        .getElementById("copyButton")
+        .addEventListener("click", function () {
+          const selected = document.getElementById("signatureSelector").value;
+          if (!selected) {
+            document.getElementById("successMessage").textContent =
+              "Please select a team member first";
+            setTimeout(() => {
+              document.getElementById("successMessage").textContent = "";
             }, 3000);
-          });
-      }
-    </script>
-  </body>
+            return;
+          }
+
+          const signatureElement = document.getElementById(selected);
+
+          // Create a range and select the signature
+          const range = document.createRange();
+          range.selectNode(signatureElement);
+
+          // Clear any current selection
+          window.getSelection().removeAllRanges();
+
+          // Add the signature to the selection
+          window.getSelection().addRange(range);
+
+          // Copy the selected content
+          document.execCommand("copy");
+
+          // Clear the selection
+          window.getSelection().removeAllRanges();
+
+          // Show success message
+          const successMessage = document.getElementById("successMessage");
+          successMessage.textContent = "Signature copied to clipboard!";
+
+          // Hide the message after 3 seconds
+          setTimeout(function () {
+            successMessage.textContent = "";
+          }, 3000);
+        });
+    }
+  </script>
+</body>
+
 </html>

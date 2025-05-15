@@ -33,6 +33,11 @@
       margin: 0 auto 30px;
     }
 
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+
     select {
       padding: 10px;
       font-size: 16px;
@@ -49,10 +54,27 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+      flex: 1;
     }
 
     .copy-btn:hover {
       background-color: #025b5f;
+    }
+
+    .copy-html-btn {
+      background-color: #5a287d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex: 1;
+    }
+
+    .copy-html-btn:hover {
+      background-color: #3e1a55;
     }
 
     .success-message {
@@ -121,7 +143,10 @@
     <select id="signatureSelector">
       <option value="">Select a team member</option>
     </select>
-    <button id="copyButton" class="copy-btn">Copy Signature</button>
+    <div class="button-group">
+      <button id="copyButton" class="copy-btn">Copy Signature</button>
+      <button id="copyHtmlButton" class="copy-html-btn">Copy HTML Code</button>
+    </div>
     <div id="successMessage" class="success-message"></div>
   </div>
 
@@ -184,7 +209,7 @@
                       ${member.position}
                     </p>
                     <p style="margin: 4px 0; font-size: 13px; color: #666">
-                      IEEE Tunisian Student &amp; Young Professional 13 Congress
+                      IEEE Tunisian Student &amp; Young Professional <br/>Congress 13
                     </p>
 
                                   <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
@@ -273,6 +298,40 @@
           // Show success message
           const successMessage = document.getElementById("successMessage");
           successMessage.textContent = "Signature copied to clipboard!";
+
+          // Hide the message after 3 seconds
+          setTimeout(function () {
+            successMessage.textContent = "";
+          }, 3000);
+        });
+
+      document
+        .getElementById("copyHtmlButton")
+        .addEventListener("click", function () {
+          const selected = document.getElementById("signatureSelector").value;
+          if (!selected) {
+            document.getElementById("successMessage").textContent =
+              "Please select a team member first";
+            setTimeout(() => {
+              document.getElementById("successMessage").textContent = "";
+            }, 3000);
+            return;
+          }
+
+          const signatureElement = document.getElementById(selected);
+          const htmlCode = signatureElement.innerHTML;
+
+          // Create a temporary textarea to copy the HTML
+          const textarea = document.createElement("textarea");
+          textarea.value = htmlCode;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+
+          // Show success message
+          const successMessage = document.getElementById("successMessage");
+          successMessage.textContent = "HTML code copied to clipboard!";
 
           // Hide the message after 3 seconds
           setTimeout(function () {

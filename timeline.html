@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Timeline Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bs-primary: #48989e;
+            --bs-secondary: #026c6f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--bs-secondary), var(--bs-primary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .nav button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .nav button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .current-month {
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-width: 200px;
+        }
+
+        .calendar-container {
+            padding: 40px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #368487;
+        }
+
+        .day-header {
+            background: var(--bs-secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .day {
+            background: white;
+            min-height: 100px;
+            padding: 5px;
+            position: relative;
+        }
+
+        .day.other-month {
+            background: #f5f5f5;
+            color: #999;
+        }
+
+        .day-number {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .event {
+            color: white;
+            padding: 4px 6px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .event.session {
+            background: #3498db;
+        }
+
+        .event.deadline {
+            background: #e74c3c;
+        }
+
+        .event.mentorship {
+            background: #f39c12;
+        }
+
+        .event.media-announcement {
+            background: #9b59b6;
+        }
+
+        .event.internal-announcement {
+            background: #1abc9c;
+        }
+
+        .event.pitching {
+            background: #27ae60;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .calendar {
+                font-size: 12px;
+            }
+
+            .day {
+                min-height: 50px;
+                padding: 4px;
+            }
+
+            .event {
+                font-size: 8px;
+                padding: 2px 4px;
+            }
+
+            .legend {
+                gap: 15px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Herotopia Timeline Calendar</h1>
+            <div class="nav">
+                <button onclick="changeMonth(-1)">← Previous</button>
+                <div class="current-month" id="currentMonth"></div>
+                <button onclick="changeMonth(1)">Next →</button>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar" id="calendar"></div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #9b59b6;"></div>
+                    <span>Media Announcement</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3498db;"></div>
+                    <span>Session</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1abc9c;"></div>
+                    <span>Internal Announcement</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e74c3c;"></div>
+                    <span>Deadline</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <span>Mentorship</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #27ae60;"></div>
+                    <span>Pitching</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const events = [
+            { date: '2025-09-28', title: 'Post Media for Task 1 Session', type: 'media-announcement' },
+            { date: '2025-09-30', title: 'Task 1 Session', type: 'session' },
+            { date: '2025-09-30', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-07', title: 'Task 1 Submission Deadline', type: 'deadline' },
+
+            { date: '2025-10-08', title: 'Post Media for Task 2 Session', type: 'media-announcement' },
+            { date: '2025-10-10', title: 'Task 2 Session', type: 'session' },
+            { date: '2025-10-10', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-17', title: 'Task 2 Submission Deadline', type: 'deadline' },
+
+            { date: '2025-10-18', title: 'Post Media for Task 3 Session', type: 'media-announcement' },
+            { date: '2025-10-20', title: 'Task 3 Session', type: 'session' },
+            { date: '2025-10-20', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-27', title: 'Task 3 Submission Deadline', type: 'deadline' },
+
+            { date: '2025-10-28', title: 'Post Media for Task 4 Session', type: 'media-announcement' },
+            { date: '2025-10-30', title: 'Task 4 Session', type: 'session' },
+            { date: '2025-10-30', title: 'Task Announcement', type: 'internal-announcement' },
+
+            { date: '2025-11-01', title: 'Technical Session Schedule Release', type: 'internal-announcement' },
+            { date: '2025-11-03', title: 'Start of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
+            { date: '2025-11-14', title: 'End of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
+            { date: '2025-11-18', title: 'Task 4 Submission Deadline (Final Proposal Submission)', type: 'deadline' },
+
+            { date: '2025-11-25', title: 'Announcement of Finalist Teams', type: 'media-announcement' },
+            { date: '2025-11-25', title: 'Start of Pitch Deck Preparations', type: 'internal-announcement' },
+            { date: '2025-12-05', title: 'Pitch Deck Submission Deadline', type: 'deadline' },
+            { date: '2025-12-23', title: 'Pitching Sessions for Finalist Teams', type: 'pitching' }
+        ];
+
+        let currentDate = new Date(2025, 8, 1); // Start at September 2025
+
+        function getEventClass(type) {
+            switch (type) {
+                case 'media-announcement': return 'event media-announcement';
+                case 'session': return 'event session';
+                case 'internal-announcement': return 'event internal-announcement';
+                case 'deadline': return 'event deadline';
+                case 'mentorship': return 'event mentorship';
+                case 'pitching': return 'event pitching';
+                default: return 'event';
+            }
+        }
+
+        function formatDate(date) {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            return `${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        function generateCalendar() {
+            const calendar = document.getElementById('calendar');
+            const monthElement = document.getElementById('currentMonth');
+
+            monthElement.textContent = formatDate(currentDate);
+
+            // Clear previous calendar
+            calendar.innerHTML = '';
+
+            // Add day headers
+            const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayHeaders.forEach(day => {
+                const headerElement = document.createElement('div');
+                headerElement.className = 'day-header';
+                headerElement.textContent = day;
+                calendar.appendChild(headerElement);
+            });
+
+            // Get first day of month and number of days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+
+            // Generate 42 days (6 weeks)
+            for (let i = 0; i < 42; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day';
+
+                if (date.getMonth() !== currentDate.getMonth()) {
+                    dayElement.className += ' other-month';
+                }
+
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = date.getDate();
+                dayElement.appendChild(dayNumber);
+
+                // Add events for this date
+                const dateString = date.toISOString().split('T')[0];
+                const dayEvents = events.filter(event => event.date === dateString);
+
+                dayEvents.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = getEventClass(event.type);
+                    eventElement.textContent = event.title;
+                    dayElement.appendChild(eventElement);
+                });
+
+                calendar.appendChild(dayElement);
+            }
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            generateCalendar();
+        }
+
+        // Initialize calendar
+        generateCalendar();
+    </script>
+</body>
+
+</html>

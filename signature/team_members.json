@@ -1,175 +1,175 @@
 {
-    "team_members": [
-      {
-        "id": "mahdi",
-        "name": "Mohammed Mahdi Bradai",
-        "position": "Chair",
-        "phone": "+216 28 675 568",
-        "email": "mohammed_mahdi_bradai@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/bradai-mohamed-mahdi/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/mahdi.jpg"
-      },
-      {
-        "id": "siwar",
-        "name": "Siwar Gouirah",
-        "position": "Vice Chair",
-        "phone": "+216 25 245 345",
-        "email": "gouirah.siwar@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/siwar-gouirah/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/siwar.jpg"
-      },
-      {
-        "id": "nadine",
-        "name": "Nadine Jellali",
-        "position": "Secretary",
-        "phone": "+216 29 844 774",
-        "email": "nadinejellali@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/jellali-nadine/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/nadine.jpg"
-      },
-      {
-        "id": "oussama",
-        "name": "Oussama Slimani",
-        "position": "24/7 Manager",
-        "phone": "+216 53 381 375",
-        "email": "oussama.slimani@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/oussama-slimani/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/oussama.jpg"
-      },
-      {
-        "id": "iheb",
-        "name": "Iheb Charfeddine",
-        "position": "Treasurer",
-        "phone": "+216 26 505 730",
-        "email": "iheb.charfeddine@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/iheb-charfeddine/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/iheb.jpg"
-      },
-      {
-        "id": "bilel",
-        "name": "Bilel Djemel",
-        "position": "Planning Manager",
-        "phone": "+216 26 589 540",
-        "email": "bilel.djemel@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/bilel-djemel/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/bilel.jpg"
-      },
-      {
-        "id": "amir",
-        "name": "Amir Abid",
-        "position": "Sponsoring Manager",
-        "phone": "+216 26 337 322",
-        "email": "amirabid@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/amir-abid/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/amir.jpg"
-      },
-      {
-        "id": "hedi",
-        "name": "Mohamed Hedi Samet",
-        "position": "Media Manager",
-        "phone": "+216 20 084 929",
-        "email": "hedi.samet@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/samet-mohamed-hedi/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/hedi.jpg"
-      },
-      {
-        "id": "abir",
-        "name": "Abir Grati",
-        "position": "Media Manager",
-        "phone": "+216 28 339 734",
-        "email": "abir.grati@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/abir-grati-/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/abir.jpg"
-      },
-      {
-        "id": "gouiaa",
-        "name": "Mohamed Mahdi Gouiaa",
-        "position": "Design Manager",
-        "phone": "+216 20 002 594",
-        "email": "mahdigouiaa2001@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/gouiaa-mohamed-mahdi/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/mzid.jpg"
-      },
-      {
-        "id": "wiem",
-        "name": "Wiem Boujelben",
-        "position": "Design Manager",
-        "phone": "+216 22 020 434",
-        "email": "wiemboujelben@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/wiem-boujelben-9b5544286/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/wiem.jpg"
-      },
-      {
-        "id": "minyar",
-        "name": "Minyar Bougdar",
-        "position": "Logistics Manager",
-        "phone": "+216 23 202 091",
-        "email": "bougdar.minyar@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/minyarbougdar/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/minyar.jpg"
-      },
-      {
-        "id": "marwa",
-        "name": "Marwa Chaari",
-        "position": "Logistics Manager",
-        "phone": "+216 50 590 630",
-        "email": "marwachaari@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/chaari-marwa/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/marwa.jpg"
-      },
-      {
-        "id": "chams",
-        "name": "Chams Assil Chelly",
-        "position": "Challenger Coordinator",
-        "phone": "+216 28 680 153",
-        "email": "chelly.chamsassil65@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/chelly-chams-assil-b3552b258/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/chams.jpg"
-      },
-      {
-        "id": "hassen",
-        "name": "Hassen Rekik",
-        "position": "Challenges Coordinator",
-        "phone": "",
-        "email": "hassen.rekik@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/rekik-hassen/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/hassen.jpg"
-      },
-      {
-        "id": "tasnim",
-        "name": "Tasnim Elleuch",
-        "position": "Ambassadors Coordinator",
-        "phone": "+216 50 402 494",
-        "email": "tasnim.eleuch@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/tasnim-elleuch-6043a629a/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/tasnim.jpg"
-      },
-      {
-        "id": "hend",
-        "name": "Hend belkhiria",
-        "position": "Funding Coordinator",
-        "phone": "+216 53 456 785",
-        "email": "hendbelkhiria@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/hend-belkhiria/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/hend.jpg"
-      },
-      {
-        "id": "yessine",
-        "name": "Yessine Fakhfakh",
-        "position": "Videos Manager",
-        "phone": "+216 56 646 677",
-        "email": "yessinefakhfakh@ieee.org",
-        "linkedin": "https://www.linkedin.com/in/yessine-fakhfakh-470145298/",
-        "image": "https://2025-tsyp.ieee.tn/img/team/yessine.jpg"
-      },
-      {
-        "id": "assil",
-        "name": "Assil Bouaziz",
-        "position": "Sponsoring Manager",
-        "phone": "+216 50 943 073",
-        "email": "assil.bouaziz@enis.tn",
-        "linkedin": "https://www.linkedin.com/in/assil-bouaziz",
-        "image": "https://2025-tsyp.ieee.tn/img/team/assil.jpg"
-      }
-    ]
-  }
+  "team_members": [
+    {
+      "id": "mahdi",
+      "name": "Mohammed Mahdi Bradai",
+      "position": "Chair",
+      "phone": "+216 28 675 568",
+      "email": "mohammed_mahdi_bradai@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/bradai-mohamed-mahdi/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/mahdi.jpg"
+    },
+    {
+      "id": "siwar",
+      "name": "Siwar Gouirah",
+      "position": "Vice Chair",
+      "phone": "+216 25 245 345",
+      "email": "gouirah.siwar@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/siwar-gouirah/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/siwar.jpg"
+    },
+    {
+      "id": "nadine",
+      "name": "Nadine Jellali",
+      "position": "Secretary",
+      "phone": "+216 29 844 774",
+      "email": "nadinejellali@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/jellali-nadine/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/nadine.jpg"
+    },
+    {
+      "id": "oussama",
+      "name": "Oussama Slimani",
+      "position": "24/7 Manager",
+      "phone": "+216 53 381 375",
+      "email": "oussama.slimani@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/oussama-slimani/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/oussama.jpg"
+    },
+    {
+      "id": "iheb",
+      "name": "Iheb Charfeddine",
+      "position": "Treasurer",
+      "phone": "+216 26 505 730",
+      "email": "iheb.charfeddine@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/iheb-charfeddine/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/iheb.jpg"
+    },
+    {
+      "id": "bilel",
+      "name": "Bilel Djemel",
+      "position": "Planning Manager",
+      "phone": "+216 26 589 540",
+      "email": "bilel.djemel@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/bilel-djemel/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/bilel.jpg"
+    },
+    {
+      "id": "amir",
+      "name": "Amir Abid",
+      "position": "Sponsoring Manager",
+      "phone": "+216 26 337 322",
+      "email": "amirabid@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/amir-abid/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/amir.jpg"
+    },
+    {
+      "id": "hedi",
+      "name": "Mohamed Hedi Samet",
+      "position": "Media Manager",
+      "phone": "+216 20 084 929",
+      "email": "hedi.samet@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/samet-mohamed-hedi/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/hedi.jpg"
+    },
+    {
+      "id": "abir",
+      "name": "Abir Grati",
+      "position": "Media Manager",
+      "phone": "+216 28 339 734",
+      "email": "abir.grati@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/abir-grati-/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/abir.jpg"
+    },
+    {
+      "id": "gouiaa",
+      "name": "Mohamed Mahdi Gouiaa",
+      "position": "Design Manager",
+      "phone": "+216 20 002 594",
+      "email": "mahdigouiaa2001@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/gouiaa-mohamed-mahdi/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/mzid.jpg"
+    },
+    {
+      "id": "wiem",
+      "name": "Wiem Boujelben",
+      "position": "Design Manager",
+      "phone": "+216 22 020 434",
+      "email": "wiemboujelben@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/wiem-boujelben-9b5544286/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/wiem.jpg"
+    },
+    {
+      "id": "minyar",
+      "name": "Minyar Bougdar",
+      "position": "Logistics Manager",
+      "phone": "+216 23 202 091",
+      "email": "bougdar.minyar@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/minyarbougdar/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/minyar.jpg"
+    },
+    {
+      "id": "marwa",
+      "name": "Marwa Chaari",
+      "position": "Logistics Manager",
+      "phone": "+216 50 590 630",
+      "email": "marwachaari@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/chaari-marwa/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/marwa.jpg"
+    },
+    {
+      "id": "chams",
+      "name": "Chams Assil Chelly",
+      "position": "Challenger Coordinator",
+      "phone": "+216 28 680 153",
+      "email": "chelly.chamsassil65@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/chelly-chams-assil-b3552b258/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/chams.jpg"
+    },
+    {
+      "id": "hassen",
+      "name": "Hassen Rekik",
+      "position": "Challenges Coordinator",
+      "phone": "",
+      "email": "hassen.rekik@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/rekik-hassen/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/hassen.jpg"
+    },
+    {
+      "id": "tasnim",
+      "name": "Tasnim Elleuch",
+      "position": "Ambassadors Coordinator",
+      "phone": "+216 50 402 494",
+      "email": "tasnim.eleuch@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/tasnim-elleuch-6043a629a/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/tasnim.jpg"
+    },
+    {
+      "id": "hend",
+      "name": "Hend belkhiria",
+      "position": "Funding Coordinator",
+      "phone": "+216 53 456 785",
+      "email": "hendbelkhiria@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/hend-belkhiria/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/hend.jpg"
+    },
+    {
+      "id": "yessine",
+      "name": "Yessine Fakhfakh",
+      "position": "Videos Manager",
+      "phone": "+216 56 646 677",
+      "email": "yessinefakhfakh@ieee.org",
+      "linkedin": "https://www.linkedin.com/in/yessine-fakhfakh-470145298/",
+      "image": "https://2025-tsyp.ieee.tn/img/team/yessine.jpg"
+    },
+    {
+      "id": "assil",
+      "name": "Assil Bouaziz",
+      "position": "Sponsoring Manager",
+      "phone": "+216 50 943 073",
+      "email": "assil.bouaziz@enis.tn",
+      "linkedin": "https://www.linkedin.com/in/assil-bouaziz",
+      "image": "https://2025-tsyp.ieee.tn/img/team/assil.jpg"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+function sendInvitations() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data = sheet.getDataRange().getValues();
+
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const fullName = row[1]; // Dear
+    const expertise = row[2]; // Expertise in
+    const email = row[3];
+    const sent = row[4]; // Sent status
+
+    if (email && !sent) {
+      try {
+        const subject =
+          "Invitation to the 13th edition of Tunisian SYP congress";
+        const htmlMessage = createEmailContent(fullName, chefName); //, yourRole , genderedTitle, expertise, session
+
+        MailApp.sendEmail({
+          to: email,
+          subject: subject,
+          htmlBody: htmlMessage,
+        });
+
+        sheet.getRange(i + 1, 12).setValue("yes"); // Column E is for 'sent'
+        SpreadsheetApp.flush();
+      } catch (error) {
+        console.error(`Error sending email to ${email}: ${error.message}`);
+      }
+    }
+  }
+}
+
+function createEmailContent(
+  fullName,
+  chefName,
+  yourRole,
+  genderedTitle,
+  expertise,
+  session
+) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: inherit !important;
+        }
+
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p {
+            line-height: 1.5;
+            margin: 0 0 14px;
+        }
+
+        .desktop_hide,
+        .desktop_hide table {
+            mso-hide: all;
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .image_block img+div {
+            display: none;
+        }
+
+        @media (max-width: 620px) {
+            .desktop_hide table.icons-inner {
+                display: inline-block !important;
+            }
+
+            .icons-inner {
+                text-align: center;
+            }
+
+            .icons-inner td {
+                margin: 0 auto;
+            }
+
+            .mobile_hide {
+                display: none;
+            }
+
+            .row-content {
+                width: 100% !important;
+            }
+
+            .stack .column {
+                width: 100%;
+                display: block;
+            }
+
+            .mobile_hide {
+                min-height: 0;
+                max-height: 0;
+                max-width: 0;
+                overflow: hidden;
+                font-size: 0;
+            }
+
+            .desktop_hide,
+            .desktop_hide table {
+                display: table !important;
+                max-height: none !important;
+            }
+        }
+
+        .highlight1 {
+            color: #037A7F;
+            font-weight: bold;
+        }
+
+        .highlight2 {
+            font-weight: bold;
+        }
+
+        a {
+            color: #037A7F;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"
+        style="background-color: #f0f0f0; padding: 15px">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="row row-1" align="center" width="100%" border="0" cellpadding="0" cellspacing="0"
+                        role="presentation">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table class="row-content stack" align="center" border="0" cellpadding="0"
+                                        cellspacing="0" role="presentation"
+                                        style="background-color: #ffffff; border-radius: 27px; width: 600px; margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="pad">
+                                                    <div class="alignment" align="center">
+                                                        <img src="https://tsyp13-tools.onrender.com/dis-48.png"
+                                                            alt="Event Logo"
+                                                            style="display: block; height: auto; border: 0; width: 100%; max-width: 600px;" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="column column-1" width="100%" style="padding: 20px">
+                                                    <table class="paragraph_block block-3" width="100%" border="0"
+                                                        cellpadding="10" cellspacing="0" role="presentation">
+                                                        <tr>
+                                                            <td class="pad">
+                                                                <div
+                                                                    style="color: #101112; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.4; text-align: justify;">
+                                                                    <p>Dear ${fullName},</p>
+                                                                    <p>I hope this email finds you well.</p>
+                                                                    <p>On behalf of the Organizing Committee of the 13th
+                                                                        edition of the
+                                                                        <span class="highlight1">
+                                                                            IEEE Tunisian Student and Young Professional
+                                                                            Congress </span>(TSYP 13), it is with
+                                                                        pleasure that we extend to you an invitation to
+                                                                        participate as a distinguished speaker at our
+                                                                        congress.
+                                                                    </p>
+                                                                    <p>TSYP 13 will take place from <span
+                                                                            class="highlight1">December 22 to 24,
+                                                                            2025</span>, at the <span
+                                                                            class="highlight1">El Medina Congress
+                                                                            Center, Yasmine Hammamet, Tunisia</span>.
+                                                                        Hosted by the <span class="highlight2">IEEE
+                                                                            Tunisia Section</span> in collaboration with
+                                                                        the <span class="highlight2">IEEE ENIS Student
+                                                                            Branch</span>, the congress is expected to
+                                                                        welcome over <span class="highlight2">1,250
+                                                                            students and young professionals</span> from
+                                                                        across Tunisia and beyond.</p>
+                                                                    <p>We would be truly honored to have you join us as
+                                                                        an esteemed speaker. Your expertise in ${expertise} would
+                                                                        significantly enrich our program, inspiring
+                                                                        attendees and contributing to the high impact of
+                                                                        the event. We would be especially delighted if
+                                                                        you could deliver a session on the second day of
+                                                                        the congress.</p>
+                                                                    <p>Please feel free to share any preferences or
+                                                                        proposals regarding your participation. We will
+                                                                        be happy to accommodate any specific needs or
+                                                                        requirements you may have.</p>
+                                                                    <p>We warmly invite you to explore the TSYP
+                                                                        13 <a href="https://tsyp.ieee.tn/"
+                                                                            target="_blank"
+                                                                            style="text-decoration:underline; color:#037A7F">official
+                                                                            website</a> to learn more about this
+                                                                        exciting event. Additionally, we encourage you
+                                                                        to review the <a
+                                                                            href="https://drive.google.com/file/d/1ME8lXsDdBRoIpZbO7ZW_ybnjNeVEW1uR/view"
+                                                                            target="_blank"
+                                                                            style="text-decoration:underline; color:#037A7F">comprehensive
+                                                                            report</a> from the latest edition, both of
+                                                                        which are readily accessible for your
+                                                                        convenience.</p>
+                                                                    <p>We sincerely hope you will accept this
+                                                                        invitation, and we look forward to your positive
+                                                                        response.</p>
+                                                                    <p><span class="highlight2">Warm regards,</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                        <tr>
+                                            <td class="pad">
+                                                <div class="alignment" align="center">
+                                                    <div class="social-media"
+                                                        style="margin-top: 20px; text-align: center; font-family: Arial, sans-serif;">
+                                                        <p style="font-size: 12px;">
+                                                            <a href="https://www.facebook.com/ieee.tsyp" target="_blank"
+                                                                style="color: #101112;">Facebook</a> |
+                                                            <a href="https://www.instagram.com/ieee_tsyp/"
+                                                                target="_blank" style="color: #101112;">Instagram</a> |
+                                                            <a href="https://www.linkedin.com/company/ieee-tsyp/"
+                                                                target="_blank" style="color: #101112;">LinkedIn</a> |
+                                                            <a href="https://tsyp.ieee.tn/" target="_blank"
+                                                                style="color: #101112;">Web</a>
+                                                        </p>
+                                                    </div>
+                                                    <p style="font-size: 14px">
+                                                        IEEE Tunisian Student & Young Professional 13 Congress
+                                                        <br /> © 2025 All Rights Reserved
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+
+    <table style="
+                width: 100%;
+                max-width: 500px;
+                font-family: 'Arial', sans-serif;
+                border-collapse: separate;
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 20px;
+                border: 1px solid #d2d2d2;
+                margin: 0 auto;
+              ">
+        <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center">
+                    <div style="
+                      height: 120px;
+                      border-right: 1px solid #037a7f;
+                      padding-right: 10px;
+                      display: inline-block;
+                    ">
+                        <img src="https://2025-tsyp.ieee.tn/img/team/oussama.jpg" alt="Oussama Slimani"
+                            style="display: block; height: 100%; border-radius: 10px">
+                    </div>
+                </td>
+                <td style="vertical-align: middle; padding-left: 10px">
+                    <p style="margin: 0; font-size: 15px; font-weight: bold; color: #037a7f;">
+                        Oussama Slimani
+                    </p>
+                    <p style="margin: 4px 0; font-size: 13px; color: #444; font-weight: 600;">
+                        24/7 Manager
+                    </p>
+                    <p style="margin: 4px 0; font-size: 13px; color: #666">
+                        IEEE Tunisian Student &amp; Young Professional <br>Congress 13
+                    </p>
+
+                    <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
+                        <strong style="color: #037a7f">Phone: </strong>
+                        <a href="tel:+21653381375" style="color: #444; text-decoration: none">
+                            +216 53 381 375
+                        </a>
+                    </p>
+
+                    <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
+                        <strong style="color: #037a7f">Email: </strong>
+                        <a href="mailto:oussama.slimani@ieee.org" style="color: #444; text-decoration: none">
+                            oussama.slimani@ieee.org
+                        </a>
+                    </p>
+                    <p style="margin: 6px 0; font-size: 12px; color: #444; line-height: 1.4;">
+                        <strong style="color: #037a7f">LinkedIn: </strong>
+                        <a href="https://www.linkedin.com/in/oussama-slimani/" target="_blank"
+                            style="color: #444; text-decoration: none">
+                            Oussama Slimani
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
+  `;
+}

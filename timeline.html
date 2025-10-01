@@ -19,9 +19,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
             min-height: 100vh;
             padding: 20px;
+            background: #f0f6f7;
         }
 
         .container {
@@ -118,6 +118,12 @@
             font-size: 16px;
         }
 
+        .day.today {
+            border: 2px solid var(--bs-primary);
+            border-radius: 4px;
+            background: #e8f6f7;
+        }
+
         .event {
             color: white;
             padding: 4px 6px;
@@ -202,7 +208,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <main class="container">
         <div class="header">
             <h1>Herotopia Timeline Calendar</h1>
             <div class="nav">
@@ -242,41 +248,43 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
         const events = [
-            { date: '2025-09-28', title: 'Post Media for Task 1 Session', type: 'media-announcement' },
-            { date: '2025-09-30', title: 'Task 1 Session', type: 'session' },
-            { date: '2025-09-30', title: 'Task Announcement', type: 'internal-announcement' },
-            { date: '2025-10-07', title: 'Task 1 Submission Deadline', type: 'deadline' },
+            { date: '2025-10-02', title: 'Post Media for Task 1 Session', type: 'media-announcement' },
+            { date: '2025-10-04', title: 'Task 1 Session', type: 'session' },
+            { date: '2025-10-04', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-10', title: 'Task 1 Submission Deadline', type: 'deadline' },
 
-            { date: '2025-10-08', title: 'Post Media for Task 2 Session', type: 'media-announcement' },
-            { date: '2025-10-10', title: 'Task 2 Session', type: 'session' },
-            { date: '2025-10-10', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-09', title: 'Post Media for Task 2 Session', type: 'media-announcement' },
+            { date: '2025-10-11', title: 'Task 2 Session', type: 'session' },
+            { date: '2025-10-11', title: 'Task Announcement', type: 'internal-announcement' },
             { date: '2025-10-17', title: 'Task 2 Submission Deadline', type: 'deadline' },
 
-            { date: '2025-10-18', title: 'Post Media for Task 3 Session', type: 'media-announcement' },
-            { date: '2025-10-20', title: 'Task 3 Session', type: 'session' },
-            { date: '2025-10-20', title: 'Task Announcement', type: 'internal-announcement' },
-            { date: '2025-10-27', title: 'Task 3 Submission Deadline', type: 'deadline' },
+            { date: '2025-10-16', title: 'Post Media for Task 3 Session', type: 'media-announcement' },
+            { date: '2025-10-18', title: 'Task 3 Session', type: 'session' },
+            { date: '2025-10-18', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-24', title: 'Task 3 Submission Deadline', type: 'deadline' },
 
-            { date: '2025-10-28', title: 'Post Media for Task 4 Session', type: 'media-announcement' },
-            { date: '2025-10-30', title: 'Task 4 Session', type: 'session' },
-            { date: '2025-10-30', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-10-23', title: 'Post Media for Task 4 Session', type: 'media-announcement' },
+            { date: '2025-10-25', title: 'Task 4 Session', type: 'session' },
+            { date: '2025-10-25', title: 'Task Announcement', type: 'internal-announcement' },
 
             { date: '2025-11-01', title: 'Technical Session Schedule Release', type: 'internal-announcement' },
             { date: '2025-11-03', title: 'Start of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
-            { date: '2025-11-14', title: 'End of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
-            { date: '2025-11-18', title: 'Task 4 Submission Deadline (Final Proposal Submission)', type: 'deadline' },
+            { date: '2025-11-17', title: 'End of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
 
-            { date: '2025-11-25', title: 'Announcement of Finalist Teams', type: 'media-announcement' },
-            { date: '2025-11-25', title: 'Start of Pitch Deck Preparations', type: 'internal-announcement' },
-            { date: '2025-12-05', title: 'Pitch Deck Submission Deadline', type: 'deadline' },
+            { date: '2025-11-21', title: 'Task 4 Submission Deadline (Final Proposal Submission)', type: 'deadline' },
+
+            { date: '2025-11-30', title: 'Announcement of Finalist Teams', type: 'media-announcement' },
+            { date: '2025-11-30', title: 'Start of Pitch Deck Preparations', type: 'internal-announcement' },
+            { date: '2025-12-10', title: 'Pitch Deck Submission Deadline', type: 'deadline' },
             { date: '2025-12-23', title: 'Pitching Sessions for Finalist Teams', type: 'pitching' }
         ];
 
-        let currentDate = new Date(2025, 8, 1); // Start at September 2025
+        let currentDate = new Date(2025, 9, 1); // October 2025
+        const today = new Date();
 
         function getEventClass(type) {
             switch (type) {
@@ -296,14 +304,23 @@
             return `${months[date.getMonth()]} ${date.getFullYear()}`;
         }
 
+        // 🔧 Local date formatter (fix timezone issue)
+        function formatLocalDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
         function generateCalendar() {
             const calendar = document.getElementById('calendar');
             const monthElement = document.getElementById('currentMonth');
-
             monthElement.textContent = formatDate(currentDate);
 
             // Clear previous calendar
             calendar.innerHTML = '';
+
+            const fragment = document.createDocumentFragment();
 
             // Add day headers
             const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -311,25 +328,24 @@
                 const headerElement = document.createElement('div');
                 headerElement.className = 'day-header';
                 headerElement.textContent = day;
-                calendar.appendChild(headerElement);
+                fragment.appendChild(headerElement);
             });
 
-            // Get first day of month and number of days
+            // First day of visible calendar
             const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
             const startDate = new Date(firstDay);
             startDate.setDate(startDate.getDate() - firstDay.getDay());
 
             // Generate 42 days (6 weeks)
             for (let i = 0; i < 42; i++) {
-                const date = new Date(startDate);
-                date.setDate(startDate.getDate() + i);
+                const date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
 
                 const dayElement = document.createElement('div');
-                dayElement.className = 'day';
+                dayElement.className = 'day' + (date.getMonth() !== currentDate.getMonth() ? ' other-month' : '');
 
-                if (date.getMonth() !== currentDate.getMonth()) {
-                    dayElement.className += ' other-month';
+                // highlight today
+                if (date.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
                 }
 
                 const dayNumber = document.createElement('div');
@@ -337,23 +353,28 @@
                 dayNumber.textContent = date.getDate();
                 dayElement.appendChild(dayNumber);
 
-                // Add events for this date
-                const dateString = date.toISOString().split('T')[0];
+                // Add events (using local date format)
+                const dateString = formatLocalDate(date);
                 const dayEvents = events.filter(event => event.date === dateString);
 
                 dayEvents.forEach(event => {
                     const eventElement = document.createElement('div');
                     eventElement.className = getEventClass(event.type);
                     eventElement.textContent = event.title;
+                    eventElement.setAttribute("aria-label", event.title);
                     dayElement.appendChild(eventElement);
                 });
 
-                calendar.appendChild(dayElement);
+                fragment.appendChild(dayElement);
             }
+
+            calendar.appendChild(fragment);
         }
 
         function changeMonth(delta) {
-            currentDate.setMonth(currentDate.getMonth() + delta);
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth() + delta;
+            currentDate = new Date(year, month, 1); // always reset to 1st
             generateCalendar();
         }
 

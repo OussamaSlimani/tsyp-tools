@@ -252,38 +252,27 @@
 
     <script>
         const events = [
-            { date: '2025-10-02', title: 'Post Media for Task 1 Session', type: 'media-announcement' },
-            { date: '2025-10-04', title: 'Task 1 Session', type: 'session' },
-            { date: '2025-10-05', title: 'Task Announcement', type: 'internal-announcement' },
-            { date: '2025-10-11', title: 'Task 1 Submission Deadline', type: 'deadline' },
+            { date: '2025-11-11', title: 'Technical Session Release for Mentors', type: 'internal-announcement' },
+            { date: '2025-11-12', title: 'Technical Session Release for Teams', type: 'internal-announcement' },
 
-            { date: '2025-10-12', title: 'Post Media for Task 2 Session', type: 'media-announcement' },
-            { date: '2025-10-15', title: 'Task 2 Session', type: 'session' },
-            { date: '2025-10-15', title: 'Task Announcement', type: 'internal-announcement' },
-            { date: '2025-10-19', title: 'Task 2 Submission Deadline', type: 'deadline' },
+            { date: '2025-11-13', title: 'Start of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
+            { date: '2025-11-27', title: 'End of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
 
-            { date: '2025-10-20', title: 'Post Media for Task 3 Session', type: 'media-announcement' },
-            { date: '2025-10-22', title: 'Task 3 Session', type: 'session' },
-            { date: '2025-10-22', title: 'Task Announcement', type: 'internal-announcement' },
-            { date: '2025-10-28', title: 'Task 3 Submission Deadline', type: 'deadline' },
+            { date: '2025-11-27', title: 'Post Media for Task 4 Session', type: 'media-announcement' },
+            { date: '2025-11-29', title: 'Task 4 Session', type: 'session' },
 
-            { date: '2025-10-31', title: 'Post Media for Task 4 Session', type: 'media-announcement' },
-            { date: '2025-11-02', title: 'Task 4 Session', type: 'session' },
-            { date: '2025-11-02', title: 'Task Announcement', type: 'internal-announcement' },
+            { date: '2025-11-30', title: 'Task 3 Part 2 Submission Deadline', type: 'deadline' },
+            { date: '2025-12-06', title: 'Final Proposal Submission', type: 'deadline' },
 
-            { date: '2025-11-04', title: 'Technical Session Schedule Release', type: 'internal-announcement' },
-            { date: '2025-11-06', title: 'Start of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
-            { date: '2025-11-18', title: 'End of One-to-One Technical Mentorship Sessions', type: 'mentorship' },
+            { date: '2025-12-13', title: 'Announcement of Finalist Teams', type: 'media-announcement' },
 
-            { date: '2025-11-21', title: 'Task 4 Submission Deadline (Final Proposal Submission)', type: 'deadline' },
+            { date: '2025-12-18', title: 'Pitch Deck Submission Deadline', type: 'deadline' },
 
-            { date: '2025-11-30', title: 'Announcement of Finalist Teams', type: 'media-announcement' },
-            { date: '2025-11-30', title: 'Start of Pitch Deck Preparations', type: 'internal-announcement' },
-            { date: '2025-12-10', title: 'Pitch Deck Submission Deadline', type: 'deadline' },
             { date: '2025-12-23', title: 'Pitching Sessions for Finalist Teams', type: 'pitching' }
         ];
 
-        let currentDate = new Date(2025, 9, 1); // October 2025
+
+        let currentDate = new Date(2025, 10, 1); // November 2025
         const today = new Date();
 
         function getEventClass(type) {
